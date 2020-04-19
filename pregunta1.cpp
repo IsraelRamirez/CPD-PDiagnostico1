@@ -54,7 +54,7 @@ std::string conversorDeCodigo(std::string codigo){
  * 
  * @param argc Número de argumentos ingresados por el cliente.
  * @param argv Arreglo argumentos ingresados por el cliente.
- * @return Retorna el código simplificado, del código ingresado por el cliente
+ * @return Devuelve el código de error.
  */
 int main(int argc, char** argv){
     //Detecta si el usuario ha ingresado una palabra como código.
@@ -65,9 +65,12 @@ int main(int argc, char** argv){
         
         //Entrega el nuevo código convertido al usuario mostrandolo por pantalla.
         std::cout << std::endl << "Nuevo código convertido: " << conversorDeCodigo(argv[1]) << std::endl;
+        
+        return 0;
     }
     //Detecta si el usuario no ha ingresado una palabra como código.
     else{
+        
         std::cout<< std::endl << "Ha ocurrido un error: Debe ingresar una palabra como código." << std::endl;
         return 1;
     }
