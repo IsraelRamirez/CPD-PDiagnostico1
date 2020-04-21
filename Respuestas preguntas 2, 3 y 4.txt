@@ -1,0 +1,36 @@
+Pregunta 2)
+SELECT
+	courses.name AS "ASIGNATURA", ##Asignaturas en el sistema
+	(teachers.last_name +" "+ teachers.first_name) AS "PROFESOR", ##Estimé que era posible que hubiera más de una sección de la asignatura, por lo que era necesario filtrar profesores.
+	start_date AS "AÑO DE INICIO", ##Año de inicio de la asignatura
+	AVG(score) AS "PROMEDIO NOTAS", ##Promedio de notas de la asignatura
+	STDEV(score) AS "DESVIACIÓN ESTANDAR NOTAS", ##Desviación estandar de las notas de la asignatura
+	MIN(score) AS "NOTA MÍNIMA", ##Nota mínima registrada en la asignatura
+	MAX(score) AS "NOTA MÁXIMA" ##Nota máxima registrada en la asignatura
+FROM
+	##Tablas involucradas en el proceso: profesores, asignaturas, pruebas y resultado de las evaluaciones
+	teachers,
+	courses,
+	exams,
+	evaluations
+WHERE
+	##Se crea las relaciones de las tablas: profesores ->cursos ; cursos -> examenes ; examenes -> Resultados de evaluaciones
+	teachers.pk = teacher_fk AND
+	courses.pk = course_fk AND
+	exams.pk = exam_fk
+GROUP BY
+	##Se agrupan los datos según asignaturas, profesor y año de inicio en ese orden
+	##Nuevamente se reitera que era necesario agregar la variable de profesor en caso de multiples secciones
+	"ASIGNATURA",
+	"PROFESOR",
+	"AÑO DE INICIO"
+
+Pregunta 3)
+La exclusión mutua consiste en que un proceso toma el control de una recurso, el cual es utilizado por varios procesos
+pero este proceso bloquea el acceso de los demás procesos para evitar que se colapse el sistema.
+
+Pregunta 4)
+Un socket es un objeto que establece una conexion bilateral de datos entre un servidor y un cliente, o inclusive varios 
+clientes.
+
+Nota: en redes y comunicación de datos, se nos pidió desarrollar un server con multi clientes.
